@@ -1,0 +1,31 @@
+{
+    "name": "time-logger",
+    "version": "1.0.0",
+    "description": "NodeJS CLI Time Logger",
+    "main": "/dist/index.js",
+    "scripts": {
+        "build": "tsc",
+        "start": "tsc && node dist/index.js"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/frazierjoe/time-logger.git"
+    },
+    "keywords": [
+        "Time",
+        "Logger",
+        "Node"
+    ],
+    "author": "Joe Frazier",
+    "license": "GPL-3.0",
+    "bugs": {
+        "url": "https://github.com/frazierjoe/time-logger/issues"
+    },
+    "homepage": "https://github.com/frazierjoe/time-logger#readme",
+    "devDependencies": {
+        "typescript": "^4.2.3"
+    },
+    "dependencies": {
+        "inquirer": "^8.0.0"
+    }
+}
