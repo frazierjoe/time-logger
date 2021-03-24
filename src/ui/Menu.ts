@@ -1,8 +1,8 @@
 import inquirer, {QuestionCollection} from "inquirer";
 import Page from "../lib/models/page";
-import { clear } from "../lib/utils/helpers";
 import ClockIn from "./ClockIn";
 import ClockOut from "./ClockOut";
+import Title from "./Title";
 
 
 
@@ -20,7 +20,7 @@ export default class Menu implements Page{
     }]
 
     public render(){
-        clear();
+        Title.render();
         inquirer.prompt(this.question)
         .then((answer) => {
             const choice = this.choices.find((item) => item.name === answer[this.name])

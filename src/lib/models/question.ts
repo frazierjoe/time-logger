@@ -1,13 +1,13 @@
 export default interface Question{
-    type: String;
+    type: string;
 
-    name: String;
+    name: string;
 
-    message: String;
+    message: string;
 
-    default: String | Number | Boolean | Array<String> | Function;
+    default: string | Number | Boolean | Array<string> | Function;
     
-    choices: Array<String> | Function;
+    choices: Array<string> | Function;
 
     validate: Function;
 
@@ -19,9 +19,9 @@ export default interface Question{
 
     pageSize: Number;
 
-    prefix: String;
+    prefix: string;
 
-    suffix: String;
+    suffix: string;
 
     askAnswered: Boolean;
 
