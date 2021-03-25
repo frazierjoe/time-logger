@@ -1,6 +1,9 @@
 import inquirer, { QuestionCollection } from "inquirer";
+import Application from "..";
+import Job from "../lib/models/job";
 import Page from "../lib/models/page";
-import Menu from "./Menu";
+import { clear } from "../lib/utils/helpers";
+import Logger from "../lib/utils/Logger";
 
 export default class CreateJob implements Page{
     public name = "Create Job";
@@ -8,9 +11,16 @@ export default class CreateJob implements Page{
     private question: QuestionCollection = [
         {
             type: 'input',
-            name: this.name,
-            message: "Name of Job:"
-        }
+            name: 'title',
+            message: "Job Title:",
+            default: "Software Developer"
+        },
+        {
+            type: 'input',
+            name: 'company',
+            message: "Company:",
+            default: "Boring Company"
+        },
     ]
 
     private static instance?: CreateJob;
@@ -22,17 +32,20 @@ export default class CreateJob implements Page{
         return this.instance;
     }
 
-    public render() {
+    public render(callback: Function) {
+        const application = Application.getInstance();
         inquirer.prompt(this.question)
         .then((answer) => {
-            const job = answer[this.name]
-            
+            const job = new Job(answer.title, answer.company);
+            application.addJob(job);
         })
         .catch((err) => {
-
+            Logger.error(`Error creating job: ${err}`);
         })
-        .finally(() => {
-            Menu.getInstance().render()
+        .finally(() => {    
+            clear();
+            Logger.success('Created Job Successfully!');
+            callback();
         })
     }
 }

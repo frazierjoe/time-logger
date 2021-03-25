@@ -1,8 +1,7 @@
 import Job from './lib/models/job';
+import { clear } from './lib/utils/helpers';
 import Menu from './ui/Menu';
 
-const menu = new Menu();
-menu.render();
 
 export default class Application {
     /**
@@ -31,6 +30,7 @@ export default class Application {
      * start the application
      */
     private start(){
+        clear();
         new Menu().render();
     }
 

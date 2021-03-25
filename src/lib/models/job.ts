@@ -1,5 +1,4 @@
 import { v4 } from 'uuid';
-import Menu from '../../ui/Menu';
 import { newDir } from '../utils/fileSystem';
 import Logger from '../utils/Logger';
 import Rate from './rate';
@@ -18,12 +17,12 @@ export default class Job{
 
     filePath?: string;
 
-    constructor(title: string, company: string, rateTimeline: Rate[], timeSheet: TimeFrame[]){
+    constructor(title: string, company: string, rateTimeline?: Rate[], timeSheet?: TimeFrame[]){
         this.title = title;
         this.company = company;
         this.uid = v4();
-        this.rateTimeline = rateTimeline;
-        this.timeSheet = timeSheet;
+        this.rateTimeline = rateTimeline || [];
+        this.timeSheet = timeSheet || [];
         const suggestedPath = `./data/${this.uid}.json`
         try {
             newDir(suggestedPath);
@@ -32,9 +31,6 @@ export default class Job{
         catch(err){
             this.filePath = undefined
             Logger.error(err);
-        }
-        finally{
-            Menu.getInstance().render();
         }
     }
 }

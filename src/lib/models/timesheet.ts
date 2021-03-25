@@ -22,7 +22,7 @@ export default class TimeSheet{
         if (this.clockedIn){
             const end = time || new Date();
             const timeFrame = this.getRecentTimeStamp()
-            timeFrame.setEnd(end);
+            timeFrame.end = end;
             // this.setRecentTimeStamp(timeFrame); //TODO is this needed?    
             this.clockedIn = false;
         }

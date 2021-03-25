@@ -9,4 +9,8 @@ export default class Logger{
         console.log(chalk.white(args));
     }
 
+    static success(args: any){
+        console.log(chalk.green(args));
+    }
+
 }
