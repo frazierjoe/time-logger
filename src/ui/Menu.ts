@@ -6,26 +6,36 @@ import Title from "./Title";
 
 
 
-export default class Menu implements Page{
+export default class Menu implements Page {
+
     public name = "Menu"
 
-    choices = [ new ClockIn, new ClockOut ]
+    private static choices = [ new ClockIn, new ClockOut ]
 
-    question: QuestionCollection = [{
+    private static instance?: Menu;
+
+    public static getInstance(){
+        if (this.instance === undefined){
+            this.instance = new Menu();
+        }
+        return this.instance;
+    }
+
+    private static question: QuestionCollection = [{
         type: 'list',
-        name: this.name,
+        name: Menu.name,
         message: "What would you like to do?",
-        choices: this.choices.map((item: any) => item.name)
-
+        choices: Menu.choices.map((item: any) => item.name)
     }]
 
     public render(){
         Title.render();
-        inquirer.prompt(this.question)
+        inquirer.prompt(Menu.question)
         .then((answer) => {
-            const choice = this.choices.find((item) => item.name === answer[this.name])
+            const choice = Menu.choices.find((item) => item.name === answer[this.name])
             choice?.render();
         }).catch((err) => console.error(err))
     }
+
     
 }
