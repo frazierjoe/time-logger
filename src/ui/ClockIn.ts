@@ -23,7 +23,7 @@ export default class ClockIn implements Page{
         .then((answer) => {
             const uid = answer[ClockIn.name]
             const job = application.getJob(uid);
-            //TODO
+            //TODO handle clocking in
         })
         .catch((err) => {
             Logger.error(`Error clocking in: ${err}`)

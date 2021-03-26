@@ -7,6 +7,7 @@ export default class ClockOut implements Page{
 
     public render() {
         Logger.log("Running" )
+        //TODO handle clock out
     }
     
 }

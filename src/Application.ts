@@ -22,7 +22,7 @@ export default class Application {
     }
 
     private constructor(jobs?: Job[]) {
-        this.jobs = jobs || [];
+        this.jobs = jobs || []; //TODO pull from file system
         this.start();
     }
 

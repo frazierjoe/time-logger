@@ -1,3 +1,3 @@
-import Application from './src/'
+import Application from './src/Application'
 
 Application.getInstance();
